@@ -1,46 +1,44 @@
 {% extends "layout.html" %}
 
 {% block title %}
-    Portfolio
+    Stocks
 {% endblock %}
 
 {% block main %}
-<h1 class="display-4">Portfolio</h1>
-{% if message is defined %}
-<p>{{ message }}</p>
-{% else %}
-<table class="table table-sm table-bordered">
-  <thead>
-    <tr>
-      <th scope="col">Symbol</th>
-      <th scope="col">Company</th>
-      <th scope="col">Shares</th>
-      <th scope="col">Unit Price (USD)</th>
-      <th scope="col">Total Value (USD)</th>
-    </tr>
-  </thead>
-
-  <tbody>
+    <table class="table">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">Symbol</th>
+          <th scope="col">Name</th>
+          <th scope="col">Shares</th>
+          <th scope="col">Price</th>
+          <th scope="col">Total</th>
+        </tr>
+      </thead>
+      <tbody>
     {% for stock in stocks %}
-    <tr>
-      <td scope="row">{{ stock.symbol }}</td>
-      <td>{{ stock.name }}</td>
-      <td>{{ stock.shares }}</td>
-      <td>{{ stock.price }}</td>
-      <td>{{ stock.value }}</td>
-    </tr>
+      <tr>
+        <th scope="row">{{ stock[0] }}</th>
+        <td>{{ stock[1] }}</td>
+        <td>{{ stock[2] }}</td>
+        <td>{{ stock[3] }}</td>
+        <td>{{ stock[4] }}</td>
+      </tr>
     {% endfor %}
-    <tr>
-      <td scope="row" colspan="4" class="text-right font-weight-bold"
-        >Balance</td
-      >
-      <td class="font-weight-bold">{{ balance }}</td>
-    </tr>
-    <tr>
-      <th scope="row" colspan="4" class="text-right font-weight-bold">Total</th>
-      <td class="font-weight-bold">{{ value }}</td>
-    </tr>
-  </tbody>
-</table>
-{% endif %}
+      <tr>
+        <th scope="row">Cash</th>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>{{ cash }}</td>
+      </tr>
+      <tr>
+        <th scope="row"></th>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>{{ total }}</td>
+      </tr>
+      </tbody>
+    </table>
 {% endblock %}
